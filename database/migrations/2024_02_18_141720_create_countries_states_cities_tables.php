@@ -38,6 +38,19 @@ return new class extends Migration
             // Define foreign key constraint
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
         });
+
+        Schema::create('pincodes', function (Blueprint $table) {
+            $table->id();
+            $table->string('pincode');
+            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('state_id');
+            $table->timestamps();
+        
+            // Define foreign key constraints
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+        });
+        
     }
 
 
@@ -49,5 +62,6 @@ return new class extends Migration
         Schema::dropIfExists('countries');
         Schema::dropIfExists('states');
         Schema::dropIfExists('cities');
+        Schema::dropIfExists('pincodes');
     }
 };

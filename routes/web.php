@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('dropdown', [DropdownController::class, 'index']);
 Route::post('fetch-state', [DropdownController::class, 'fetchState']);
 Route::post('fetch-city', [DropdownController::class, 'fetchCity']);
+Route::post('fetch-pincode', [DropdownController::class, 'fetchPincode']);
+Route::get('/export-database', [DropdownController::class, 'exportDatabase'])->name('export.database');
